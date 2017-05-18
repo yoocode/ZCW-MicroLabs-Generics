@@ -9,8 +9,24 @@ import java.util.Arrays;
  */
 public class ObjectStack<E> {
     private Object[] elements;
+    private int sizeOfElements;
 
     public ObjectStack() {
+        elements = new Object[0];
+        sizeOfElements = 0;
+    }
 
+    public void push (Object item){
+        if(sizeOfElements == elements.length)
+            elements = Arrays.copyOf(elements, elements.length + 5);
+        elements[sizeOfElements++] = item;
+    }
+
+    public Object pop(){
+        return elements[--sizeOfElements];
+    }
+
+    public boolean isEmpty(){
+        return sizeOfElements ==0;
     }
 }
